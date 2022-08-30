@@ -1,0 +1,35 @@
+{% extends 'blog/based.html' %}
+{% block content %}
+
+<body>
+  <br>
+<h1 style=margin-left:-40%;margin-bottom:8%;>{{object.title}} <br><strong>By:</strong><a class='dark' href="{% url 'user-post' object.author.username %}">{{object.author}}</a></h1>
+ 
+   <img class="rounded-circle  col-3 float-right" style= width:14.6%;height:7.5%;margin-bottom:-18%;margin-left:-32%; src="{{object.author.profile.image.url}}"> 
+</h1>
+  <br>
+  <div style='margin-left:-16%'>
+   <div  style="width: 150%; background-color:whitesmoke;">
+    <div class='card'>
+  <img class="card-img-top" src="..." alt="No image" style="border-bottom:black solid;">
+ </div>
+  
+ <h3>
+  <p>{{object.content}}</p>
+   
+    <p>{{object.date_posted}}</p></p>
+    
+</h3>
+
+
+{% if object.author == user %}
+<a class=' btn btn-secondary' href="{% url 'blog-update' object.id %}"> Edit Post </a>     <a class=' btn btn-danger' href="{% url 'blog-delete' object.id %}"> Delete Post </a>
+
+{% endif %}
+</div>
+
+  <br>
+    
+</body>
+
+{% endblock %}
